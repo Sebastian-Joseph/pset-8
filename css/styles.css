@@ -15,3 +15,9 @@ h2 {
   font-weight: lighter;
   margin: 2%;
 }
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
