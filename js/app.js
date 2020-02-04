@@ -37,7 +37,7 @@ function render() {
   board.forEach(function(mark, index) {
     squares[index].textContent = mark;
   });
-  message.textContent = 'Turn: ${turn}';
+  message.textContent = win ? `${win} wins!` : `Turn: ${turn}`;
 }
 
 function takeTurn(e) {
@@ -47,7 +47,7 @@ function takeTurn(e) {
 
   board[index] = turn;
   turn = turn === "X" ? "O" : "X";
-
+  win = getWinner();
   render();
 }
 
