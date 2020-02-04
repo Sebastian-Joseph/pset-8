@@ -7,6 +7,7 @@ let points1 = 0;
 let points2 = 0;
 ///////////////////// CACHED ELEMENT REFERENCES /////////////////////
 const squares = Array.from(document.querySelectorAll("#board div"));
+const message = document.querySelector("h2");
 ///////////////////// EVENT LISTENERS ///////////////////////////////
 window.onload = init;
 document.getElementById("board").onclick = takeTurn;
@@ -26,6 +27,7 @@ function render() {
   board.forEach(function(mark, index) {
     squares[index].textContent = mark;
   });
+  message.textContent = 'Turn: ${turn}';
 }
 
 function takeTurn(e) {
