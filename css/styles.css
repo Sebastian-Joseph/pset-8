@@ -41,4 +41,24 @@ h2 {
   width: 150px;
 }
 
-.square:hover 
+.square:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+#reset-button {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  font-size: 21px;
+  line-height: 55px;
+  margin: 1%;
+  text-align: center;
+  width: 456px;
+}
+
+#reset-button:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
