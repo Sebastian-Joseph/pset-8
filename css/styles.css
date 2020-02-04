@@ -19,5 +19,26 @@ h2 {
 .container {
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
 }
+
+.column {
+  height: 100%;
+  with: 100%;
+  flex-direction: column;
+}
+
+.wrap {
+  flex-wrap: wrap;
+  height: 456px;
+  width: 456px;
+}
+
+.square {
+  border: 1px solid rgba(0, 0, 0, 0.75);
+  height: 150px;
+  user-select: none;
+  width: 150px;
+}
+
+.square:hover 
