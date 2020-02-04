@@ -24,7 +24,7 @@ function init() {
 
 function render() {
   board.forEach(function(mark, index) {
-    square[index].textContent = mark;
+    squares[index].textContent = mark;
   });
 }
 
