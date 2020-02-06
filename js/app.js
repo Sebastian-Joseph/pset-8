@@ -12,9 +12,9 @@ const winningConditions = [
 ///////////////////// APP STATE (VARIABLES) /////////////////////////
 let board;
 let turn;
-let x = "X"
-let o = "O"
 let win;
+let pointsX = 0;
+let pointsO = 0;
 ///////////////////// CACHED ELEMENT REFERENCES /////////////////////
 const squares = Array.from(document.querySelectorAll("#board div"));
 const message = document.querySelector("h2");
@@ -29,9 +29,17 @@ function init() {
     "", "", "",
     "", "", "",
   ];
-  turn = x;
+  turn = "X";
   win = null;
   render();
+};
+
+function pickTurnX() {
+
+};
+
+function pickTurnO() {
+
 }
 
 function render() {
@@ -49,7 +57,7 @@ function takeTurn(e) {
 
 if (board[index] === "") {
   board[index] = turn;
-  turn = turn === x ? o : x;
+  turn = turn === "X" ? "O" : "X";
   win = getWinner();
   render();
     }
@@ -67,21 +75,20 @@ function getWinner() {
     }
   });
 
-  return winner ? winner : board.includes("") ? null : "T";
-  let pointsX = 0;
-  let pointsO = 0;
 
-  if (win === x) {
-    pointsX++
-    document.getElementById("X").innerHTML = pointsX
-  } else {
-    pointsO++
-   document.getElementById("O").innerHTML = pointsO
-
+  if (winner === "X") {
+    pointsX++;
+    document.getElementById("scoreX").innerHTML = pointsX;
   }
-}
+
+  if (winner === "O") {
+    pointsO++;
+    document.getElementById("scoreO").innerHTML = pointsO;
+  }
 
 
-function pickTurn() {
+  return winner ? winner : board.includes("") ? null : "T";
+
+
 
 }
