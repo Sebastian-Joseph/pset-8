@@ -12,8 +12,8 @@ const winningConditions = [
 ///////////////////// APP STATE (VARIABLES) /////////////////////////
 let board;
 let turn;
-let points1 = 0;
-let points2 = 0;
+let x = "X"
+let o = "O"
 let win;
 ///////////////////// CACHED ELEMENT REFERENCES /////////////////////
 const squares = Array.from(document.querySelectorAll("#board div"));
@@ -29,7 +29,7 @@ function init() {
     "", "", "",
     "", "", "",
   ];
-  turn = "X";
+  turn = x;
   win = null;
   render();
 }
@@ -39,8 +39,8 @@ function render() {
     squares[index].textContent = mark;
   });
   message.textContent = win === "T" ? "It's a tie!" : win ? `${win} wins!` : `Turn: ${turn}`;
-}
 
+}
 function takeTurn(e) {
   if (!win) {
   let index = squares.findIndex(function(square){
@@ -49,7 +49,7 @@ function takeTurn(e) {
 
 if (board[index] === "") {
   board[index] = turn;
-  turn = turn === "X" ? "O" : "X";
+  turn = turn === x ? o : x;
   win = getWinner();
   render();
     }
@@ -61,13 +61,27 @@ function getWinner() {
 
   winningConditions.forEach(function(condition, index) {
     if (
-      board[condition[0]] &&
-      board[condition[0]] === board[condition[1]] &&
-      board[condition[1]] === board[condition[2]]
+      board[condition[0]] && board[condition[0]] === board[condition[1]] && board[condition[1]] === board[condition[2]]
     ) {
       winner = board[condition[0]];
     }
   });
 
   return winner ? winner : board.includes("") ? null : "T";
+  let pointsX = 0;
+  let pointsO = 0;
+
+  if (win === x) {
+    pointsX++
+    document.getElementById("X").innerHTML = pointsX
+  } else {
+    pointsO++
+   document.getElementById("O").innerHTML = pointsO
+
+  }
+}
+
+
+function pickTurn() {
+
 }
