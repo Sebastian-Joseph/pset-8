@@ -11,10 +11,11 @@ const winningConditions = [
 ];
 ///////////////////// APP STATE (VARIABLES) /////////////////////////
 let board;
-let turn;
+let turn = "X"
 let win;
 let pointsX = 0;
 let pointsO = 0;
+var clear = document.getElementById("turn");
 ///////////////////// CACHED ELEMENT REFERENCES /////////////////////
 const squares = Array.from(document.querySelectorAll("#board div"));
 const message = document.querySelector("h2");
@@ -22,6 +23,8 @@ const message = document.querySelector("h2");
 window.onload = init;
 document.getElementById("board").onclick = takeTurn;
 document.getElementById("reset-button").onclick = init;
+document.getElementById("turnX").onclick = turnX;
+document.getElementById("turnO").onclick = turnO;
 ///////////////////// FUNCTIONS /////////////////////////////////////
 function init() {
   board = [
@@ -29,18 +32,22 @@ function init() {
     "", "", "",
     "", "", "",
   ];
-  turn = "X";
+  turn = turn;
   win = null;
   render();
 };
 
 function pickTurnX() {
-
+  init();
+  document.getElementById("turn").innerHTML = "Turn: X";
+  turn = "X";
 };
 
 function pickTurnO() {
-
-}
+init();
+document.getElementById("turn").innerHTML = "Turn: O";
+turn = "O";
+};
 
 function render() {
   board.forEach(function(mark, index) {
