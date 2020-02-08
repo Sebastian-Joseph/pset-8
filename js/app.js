@@ -15,16 +15,16 @@ let turn = "X"
 let win;
 let pointsX = 0;
 let pointsO = 0;
-var clear = document.getElementById("turn");
 ///////////////////// CACHED ELEMENT REFERENCES /////////////////////
 const squares = Array.from(document.querySelectorAll("#board div"));
 const message = document.querySelector("h2");
 ///////////////////// EVENT LISTENERS ///////////////////////////////
 window.onload = init;
+document.getElementById("pickX").onclick = pickX;
+document.getElementById("pickO").onclick = pickO;
 document.getElementById("board").onclick = takeTurn;
 document.getElementById("reset-button").onclick = init;
-document.getElementById("turnX").onclick = turnX;
-document.getElementById("turnO").onclick = turnO;
+
 ///////////////////// FUNCTIONS /////////////////////////////////////
 function init() {
   board = [
@@ -32,22 +32,21 @@ function init() {
     "", "", "",
     "", "", "",
   ];
-  turn = turn;
+turn = turn;
   win = null;
   render();
 };
 
-function pickTurnX() {
-  init();
-  document.getElementById("turn").innerHTML = "Turn: X";
+// who going first
+function pickX() {
+  document.getElementById("turn").innnerHTML = "Turn: X";
   turn = "X";
 };
 
-function pickTurnO() {
-init();
-document.getElementById("turn").innerHTML = "Turn: O";
-turn = "O";
-};
+function pickO() {
+  document.getElementById("turn").innerHTML = "Turn: O";
+  turn = "O";
+}
 
 function render() {
   board.forEach(function(mark, index) {
@@ -55,7 +54,8 @@ function render() {
   });
   message.textContent = win === "T" ? "It's a tie!" : win ? `${win} wins!` : `Turn: ${turn}`;
 
-}
+};
+
 function takeTurn(e) {
   if (!win) {
   let index = squares.findIndex(function(square){
@@ -69,7 +69,7 @@ if (board[index] === "") {
   render();
     }
   }
-}
+};
 
 function getWinner() {
   let winner = null;
@@ -82,7 +82,7 @@ function getWinner() {
     }
   });
 
-
+//score count
   if (winner === "X") {
     pointsX++;
     document.getElementById("scoreX").innerHTML = pointsX;
@@ -98,4 +98,4 @@ function getWinner() {
 
 
 
-}
+};

@@ -81,7 +81,7 @@ h2 {
   list-style: none;
 }
 
-#turnX {
+#pickX {
 font-family: "Roboto", monospace;
 font-size: 20px;
 font-weight: bold;
@@ -90,7 +90,7 @@ border-color: grey;
 padding: 10px 20px;
 }
 
-#turnO {
+#pickO {
   font-family: "Roboto", monospace;
   font-size: 20px;
   font-weight: bold;
